@@ -1,0 +1,11 @@
+import matplotlib.pyplot as plt
+import numpy as np
+xpoints=np.array([0,1,2,3,4,])
+ypoints=np.array([0,6,12,18,24])
+plt.title("Growth of Lisa's collection")
+plt.xlabel("Months")
+plt.ylabel("No of Books")
+plt.plot(xpoints,ypoints,marker='*',ms=22,mec='r',mfc='b')
+plt.plot(ypoints,xpoints,marker='*',ms=11,mec="hotpink",mfc="y",linestyle="-",linewidth="0.5")
+plt.grid()
+plt.show()
