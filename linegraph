@@ -1,11 +1,27 @@
 import matplotlib.pyplot as plt
 import numpy as np
-xpoints=np.array([0,1,2,3,4,])
-ypoints=np.array([0,6,12,18,24])
-plt.title("Growth of Lisa's collection")
+
+
+months = np.array([0, 1, 2, 3, 4])  
+online_sales = np.array([5, 10, 17, 15, 20])  
+offline_sales = np.array([2, 7, 12, 15, 22])  
+
+
+plt.title("Online vs Offline Book Sales Over Time")
 plt.xlabel("Months")
-plt.ylabel("No of Books")
-plt.plot(xpoints,ypoints,marker='*',ms=22,mec='r',mfc='b')
-plt.plot(ypoints,xpoints,marker='*',ms=11,mec="hotpink",mfc="y",linestyle="-",linewidth="0.5")
+plt.ylabel("Number of Books Sold")
+
+
+plt.plot(months, online_sales, marker='*', ms=12, mec='blue', mfc='lightblue', label="Online Sales", color='b', linestyle='-')
+
+
+plt.plot(months, offline_sales, marker='o', ms=10, mec='green', mfc='lightgreen', label="Offline Sales", color='g', linestyle='--')
+
+
 plt.grid()
+
+
+plt.legend()
+
+
 plt.show()
