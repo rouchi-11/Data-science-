@@ -1,0 +1,42 @@
+import scipy.stats as stats
+import numpy as np
+
+def hypothesis_test(sample,population_mean,alpha, known_population_std=None):
+    #Calculate sample mean and sample standard deviation
+    sample_mean=np.mean(sample)
+    sample_size=len(sample)
+    sample_std=np.std(sample,ddof=1)
+
+    #check if population standard deviation is known or unknown
+    if known_population_std is not None:
+        # Z-test (known population standard deviation)
+        z_stat=(sample_mean - population_mean) / (known_population_std / np.sqrt(sample_size))
+        p_value= 2*(1-stats.norm.cdf(abs(z_stat)))  #two-tailed p-value
+        test_stat=z_stat
+        test_type="Z-test"
+
+    else:
+        #t-test (unknown population standard deviation)
+        t_stat =(sample_mean - population_mean) / (sample_std / np.sqrt(sample_size))
+        p_value= 2*(1-stats.t.cdf(abs(t_stat), df=sample_size-1))  #two-tailed p-value
+        test_stat=t_stat
+        test_type="t-test"
+    #print results
+    print(f"Sample mean:{sample_mean}")
+    print(f"Population mean:{population_mean}")
+    print(f"{test_type} statistic: {test_stat}")
+    print(f"p-value: {p_value}")
+
+    #compare p-value with alpha
+    if p_value < alpha:
+        print(f"Reject the null hypothesis (p-value <{alpha})")
+    else: 
+        print(F"Fail to reject the  null hypothesis (p-value>={alpha})")
+
+#Example usage:
+sample_data=[50,52,48,47,51,49,50,53,52,47] #Example sample data
+population_mean=50 #known population mean
+alpha=0.05 #Significance level
+
+#perform hypothesis test
+hypothesis_test(sample_data,population_mean,alpha,known_population_std=None) #use none for unknown population std
