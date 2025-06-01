@@ -1,0 +1,1 @@
+This repository contains an exploratory and statistical data analysis project focused on Renewable Energy using the R programming language. The goal is to understand patterns, trends, and insights from renewable energy datasets to contribute to sustainable and data-driven energy decisions.
